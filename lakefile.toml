@@ -1,5 +1,9 @@
 name = "lem-lean"
 version = "0.1.0"
+description = "Layered Event Modelling in Lean 4: typed layers, typed edges, Δt only on causal edges, and the deontic state-partition test, with machine-checked theorems."
+keywords = ["ontology", "formal-methods", "causality", "deontic-logic", "risk-modelling"]
+license = "Apache-2.0"
+homepage = "https://www.barnes.ch/BP-Invisible-Coercions.html"
 defaultTargets = ["LemLean"]
 
 [[lean_lib]]
