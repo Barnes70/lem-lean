@@ -1,0 +1,6 @@
+name = "lem-lean"
+version = "0.1.0"
+defaultTargets = ["LemLean"]
+
+[[lean_lib]]
+name = "LemLean"
