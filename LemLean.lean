@@ -3,3 +3,4 @@ import LemLean.Basic
 import LemLean.Duration
 import LemLean.Locality
 import LemLean.Deontic
+import LemLean.Trace

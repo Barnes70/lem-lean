@@ -16,6 +16,7 @@ for Explicit Causal Analysis*, Draft v0.6 —
 | `LemLean/Duration.lean` | Δt only on causal edges (§6, §12): no duration for constitutive, classificatory or normative edges; the total reading `deltaT?` is `none` exactly on non-causal edges. |
 | `LemLean/Locality.lean` | Predicate locality (A2): a layer-respecting predicate on the whole graph is the same thing as a family of local predicates (round trip both ways). |
 | `LemLean/Deontic.lean` | P4 on S5: with three norm types the type alone settles what an omission means; with two (`Forbid φ ≡ Oblige ¬φ`) it does not — while the reduction loses no expressive power. |
+| `LemLean/Trace.lean` | Reasoning traces (§11): a mechanism (S2) causally produces a trace (S3); validity is classificatory, faithfulness representational. Validity is blind to the mechanism; two mechanisms sharing a trace cannot both be faithfully described; no judgement on the trace alone can detect faithfulness. A two-route witness (rules vs. unmentioned hint) shows the hypotheses are satisfiable. |
 | `test/Rejections.lean` | Negative tests: terms Lean must reject (an SRE predicate applied to a DRE node; Δt asked of a normative edge). |
 
 No `sorry` and no Mathlib dependency. `#print axioms` shows at most `propext` (one of Lean's three standard axioms); the deontic and locality results use no axioms at all.
@@ -31,7 +32,7 @@ lake env lean test/Rejections.lean
 
 ## Status
 
-Version 0.1.0, a first formal companion to LEM Draft v0.6. Definitions follow the paper; when
+Version 0.2.0, a formal companion to LEM Draft v0.6. Definitions follow the paper; when
 the paper changes, this package follows it.
 
 ## License
