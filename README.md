@@ -18,7 +18,7 @@ for Explicit Causal Analysis*, Draft v0.6 —
 | `LemLean/Deontic.lean` | P4 on S5: with three norm types the type alone settles what an omission means; with two (`Forbid φ ≡ Oblige ¬φ`) it does not — while the reduction loses no expressive power. |
 | `test/Rejections.lean` | Negative tests: terms Lean must reject (an SRE predicate applied to a DRE node; Δt asked of a normative edge). |
 
-No `sorry`, no axioms beyond Lean's core, no Mathlib dependency.
+No `sorry` and no Mathlib dependency. `#print axioms` shows at most `propext` (one of Lean's three standard axioms); the deontic and locality results use no axioms at all.
 
 ## Build
 
