@@ -14,8 +14,9 @@ types them differently:
 * `valid`    — classificatory: the trace satisfies the rules of a declared scheme. A proof
                kernel such as Lean's checks exactly this edge.
 
-The results below show that the classificatory edge is blind to the mechanism, and that no
-judgement made on the trace alone can detect whether the representational edge holds.
+The results below show that the classificatory edge is blind to the mechanism, and that
+wherever two mechanisms write the same trace, no judgement made on the trace alone can detect
+whether the representational edge holds.
 This is the formal core of LEM §11 (evaluation inside S3 does not identify the transition
 structure that produced the output).
 -/
