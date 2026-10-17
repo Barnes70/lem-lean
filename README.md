@@ -5,8 +5,8 @@ Layered Event Modelling (LEM) in Lean 4: the definitions behind the essay
 with machine-checked theorems about them.
 
 LEM is described in B. Kreinz, *Layered Event Modelling: Semantic Separation as a Precondition
-for Explicit Causal Analysis*, Draft v0.6 —
-<https://www.tlctc.net/tlctc-layered-event-modelling.html>.
+for Explicit Causal Analysis*, Version 1.0, Zenodo, <https://doi.org/10.5281/zenodo.23438101> —
+paper repository: [Barnes70/layered-event-modelling](https://github.com/Barnes70/layered-event-modelling).
 
 ## What is in it
 
@@ -32,8 +32,10 @@ lake env lean test/Rejections.lean
 
 ## Status
 
-Version 0.2.0, a formal companion to LEM Draft v0.6. Definitions follow the paper; when
-the paper changes, this package follows it.
+Version 0.2.0, a formal companion to LEM. Written against Draft v0.6; it covers the
+structures of v1.0 §11 (layers, local predicates, co-reference, typed edges, causal
+duration, deontic primitives, type-level stratum). When the paper changes, this package
+follows it.
 
 ## License
 
