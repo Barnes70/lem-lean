@@ -15,22 +15,39 @@ def lDRE : Layer := ⟨.S2_Event, 2⟩
 error: Application type mismatch: The argument
   d
 has type
-  V lDRE
+  Node V lDRE
 but is expected to have type
-  V lSRE
+  Node V lSRE
 in the application
   Compromised d
 -/
 #guard_msgs in
-example (V : Layer → Type) (S : Layer → Type)
-    (Compromised : LocalPredicate V S lSRE) (d : V lDRE) : S lSRE := Compromised d
+example (V : Layer → Type) (Compromised : LocalPredicate V lSRE) (d : Node V lDRE) : Prop :=
+  Compromised d
 
--- Claim 2 (§6): Δt cannot be asked of a normative edge — no causal witness exists.
+-- The same holds where both layers have the same carrier: the layer is in the node's type.
+def Vconst : Layer → Type := fun _ => Nat
+
+/--
+error: Application type mismatch: The argument
+  d
+has type
+  Node Vconst lDRE
+but is expected to have type
+  Node Vconst lSRE
+in the application
+  Compromised d
+-/
+#guard_msgs in
+example (Compromised : LocalPredicate Vconst lSRE) (d : Node Vconst lDRE) : Prop :=
+  Compromised d
+
+-- Claim 2 (§6): Δt cannot be asked of a normative edge — it is not a causal edge.
 /--
 error: Tactic `decide` proved that the proposition
   EdgeType.normative = EdgeType.causal
 is false
 -/
 #guard_msgs in
-example (V : Layer → Type) (D : CausalDuration V Nat) (e : TypedEdge V)
-    (h : e.kind = .normative) : Nat := D.deltaT e (by rw [h]; decide)
+example (V : Layer → Type) (G : EventGraph V) (D : CausalDuration G Nat) (e : G.Edge)
+    (h : G.kind e = .normative) : Nat := D.deltaT ⟨e, by rw [h]; decide⟩

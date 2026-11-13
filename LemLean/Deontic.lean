@@ -9,7 +9,7 @@ standing of an idle step. With two types, where a prohibition is encoded as an o
 omit (`Forbid φ ≡ Oblige ¬φ`), it does not: two norms of the same type give the identical
 `skip` opposite standings, and only their content tells them apart.
 
-This is the diagnostic reason LEM v0.6 keeps prohibition distinct. It is not a claim of logical
+This is the diagnostic reason LEM (§4) keeps prohibition distinct. It is not a claim of logical
 irreducibility: the two-type encoding loses no expressive power (`toNorm2_preserves_omission`),
 only this property.
 -/
