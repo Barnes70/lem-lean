@@ -16,7 +16,8 @@ paper repository: [Barnes70/layered-event-modelling](https://github.com/Barnes70
 | `LemLean/Duration.lean` | Δt only on causal edges (§6, §11): no duration for constitutive, classificatory or normative edges; the total reading `deltaT?` is `none` exactly on non-causal edges; two parallel causal edges between the same nodes may carry different durations. |
 | `LemLean/Locality.lean` | Predicate locality (A2): a layer-respecting state assignment on the whole graph is the same thing as a family of layer states, and a predicate on the whole graph the same thing as a family of local predicates (round trip both ways). |
 | `LemLean/Deontic.lean` | P4 on S5: with three norm types the type alone settles what an omission means; with two (`Forbid φ ≡ Oblige ¬φ`) it does not — while the reduction loses no expressive power. |
-| `LemLean/Trace.lean` | Reasoning traces (Note N6): a mechanism (S2) causally produces a trace (S3); validity is classificatory, faithfulness representational. Validity is blind to the mechanism; two mechanisms sharing a trace cannot both be faithfully described; wherever two mechanisms share a trace, no judgement on the trace alone can detect faithfulness. A two-route witness (rules vs. unmentioned hint) shows the hypotheses are satisfiable. |
+| `LemLean/Trace.lean` | Reasoning traces (Note N6): a mechanism (S2) causally produces a trace (S3); validity is classificatory, faithfulness representational. Validity is blind to the mechanism. General statement (`trace_only_test_iff`, no assumption on `faithful`): a judgement on traces alone agrees with faithfulness exactly when faithfulness is constant among the mechanisms that write the same trace; so where two mechanisms write one trace and it is faithful to one and not the other, no such judgement exists. Under the further assumption that a trace describes at most one mechanism, two mechanisms sharing a trace cannot both be faithfully described. A two-route witness (rules vs. unmentioned hint) shows the hypotheses are satisfiable. |
+| `LemLean/Crossing.lean` | Typed crossings: a relation between two structures with a declared kind, and what it carries as propositions to be proved (preservation, reflection and invariance of predicates; invariance of a relation; an operation carried under a side condition). Reuse of a claim at the target takes the preservation proof as an argument. Two worked crossings with the same structure and different declared kinds: the cast `Nat → Int` (extension; addition carried unconditionally, subtraction only where `a₂ ≤ a₁`, order invariant) and the reading `BitVec 64 → Nat` (representation; addition carried only while nothing overflows). |
 | `test/Rejections.lean` | Negative tests: terms Lean must reject (an SRE predicate applied to a DRE node, also where both layers share a carrier; Δt asked of a normative edge). |
 
 No `sorry` and no Mathlib dependency. `#print axioms` shows at most `propext` (one of Lean's three standard axioms); the deontic and locality results use no axioms at all.
@@ -32,9 +33,10 @@ lake env lean test/Rejections.lean
 
 ## Status
 
-Version 0.3.0, a formal companion to LEM Version 1.0. It covers the structures of §11
+Version 0.4.0, a formal companion to LEM Version 1.0. It covers the structures of §11
 (layers, nodes, states, local predicates, co-reference, the typed multigraph, causal
-duration) together with the deontic primitives and the type-level stratum. The licensing
+duration) together with the deontic primitives and the type-level stratum. Version 0.4.0
+adds the general statement on trace-only judgements and typed crossings. The licensing
 relation between the type-level stratum and the event graph is declared but not
 constrained; LEM leaves its formalisation open. When the paper changes, this package
 follows it.

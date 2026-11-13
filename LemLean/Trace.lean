@@ -14,9 +14,11 @@ types them differently:
 * `valid`    — classificatory: the trace satisfies the rules of a declared scheme. A proof
                kernel such as Lean's checks exactly this edge.
 
-The results below show that the classificatory edge is blind to the mechanism, and that
-wherever two mechanisms write the same trace, no judgement made on the trace alone can detect
-whether the representational edge holds.
+The results below show that the classificatory edge is blind to the mechanism, and that a
+judgement made on the trace alone agrees with the representational edge exactly when
+faithfulness is constant among the mechanisms that write the same trace. Where two
+mechanisms write one trace and it is faithful to one and not to the other, no such
+judgement exists.
 This is the formal core of LEM Note N6 (evaluation inside S3 does not identify the transition
 structure that produced the output).
 -/
@@ -68,6 +70,35 @@ theorem no_trace_only_faithfulness_test (hf : R.FaithfulFunctional)
   have f₂ : R.faithful (R.produce m₂) m₂ := (hD m₂).mp d₂
   rw [← h] at f₂
   exact hne (hf _ _ _ hfaith f₂)
+
+/-- The general statement, with no assumption on `faithful`. A judgement on traces alone
+    that agrees with faithfulness exists exactly when faithfulness is constant among the
+    mechanisms that write the same trace. The judgement is a predicate: nothing is said
+    about whether it can be computed. -/
+theorem trace_only_test_iff :
+    (∃ D : R.Trace → Prop, ∀ m, D (R.produce m) ↔ R.faithful (R.produce m) m) ↔
+    ∀ m₁ m₂, R.produce m₁ = R.produce m₂ →
+      (R.faithful (R.produce m₁) m₁ ↔ R.faithful (R.produce m₂) m₂) := by
+  constructor
+  · intro ⟨D, hD⟩ m₁ m₂ h
+    have e : D (R.produce m₁) ↔ D (R.produce m₂) := by rw [h]
+    exact (hD m₁).symm.trans (e.trans (hD m₂))
+  · intro hconst
+    refine ⟨fun t => ∃ m, R.produce m = t ∧ R.faithful t m, fun m => ⟨?_, ?_⟩⟩
+    · intro ⟨m', hm', hf'⟩
+      have hself : R.faithful (R.produce m') m' := by rw [hm']; exact hf'
+      exact (hconst m' m hm').mp hself
+    · intro hself
+      exact ⟨m, rfl, hself⟩
+
+/-- The obstruction: two mechanisms write the same trace, and the trace is faithful to one
+    of them and not to the other. Then no judgement on traces alone agrees with
+    faithfulness. -/
+theorem no_trace_only_test_of_split {m₁ m₂ : R.Mech} (h : R.produce m₁ = R.produce m₂)
+    (h₁ : R.faithful (R.produce m₁) m₁) (h₂ : ¬ R.faithful (R.produce m₂) m₂) :
+    ¬ ∃ D : R.Trace → Prop, ∀ m, D (R.produce m) ↔ R.faithful (R.produce m) m := by
+  intro hD
+  exact h₂ ((R.trace_only_test_iff.mp hD m₁ m₂ h).mp h₁)
 
 end ReasoningSystem
 
