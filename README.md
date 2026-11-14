@@ -6,7 +6,8 @@ the paper
 > B. Kreinz, *Typed Crossings: What Casts, Refinement Proofs and Chain-of-Thought Checks Carry
 > Across a Boundary*, Version 1.0, Zenodo, 2026, <https://doi.org/10.5281/zenodo.24219768>.
 
-The paper cites this package at tag [`v0.4.0`](https://github.com/Barnes70/lem-lean/tree/v0.4.0).
+The paper cites this package at tag [`v0.4.0`](https://github.com/Barnes70/lem-lean/tree/v0.4.0);
+its source is at [Barnes70/typed-crossings](https://github.com/Barnes70/typed-crossings).
 It grew out of two essays,
 [*Invisible Coercions and Untyped Refinement*](https://www.barnes.ch/BP-Invisible-Coercions.html)
 and [*Where Does a Model Reason?*](https://www.barnes.ch/BP-Where-Does-A-Model-Reason.html).
