@@ -1,8 +1,15 @@
 # lem-lean
 
-Layered Event Modelling (LEM) in Lean 4: the definitions behind the essay
-[*Invisible Coercions and Untyped Refinement*](https://www.barnes.ch/BP-Invisible-Coercions.html),
-with machine-checked theorems about them.
+Layered Event Modelling (LEM) in Lean 4: the definitions and machine-checked results behind
+the paper
+
+> B. Kreinz, *Typed Crossings: What Casts, Refinement Proofs and Chain-of-Thought Checks Carry
+> Across a Boundary*, Version 1.0, Zenodo, 2026, <https://doi.org/10.5281/zenodo.24219768>.
+
+The paper cites this package at tag [`v0.4.0`](https://github.com/Barnes70/lem-lean/tree/v0.4.0).
+It grew out of two essays,
+[*Invisible Coercions and Untyped Refinement*](https://www.barnes.ch/BP-Invisible-Coercions.html)
+and [*Where Does a Model Reason?*](https://www.barnes.ch/BP-Where-Does-A-Model-Reason.html).
 
 LEM is described in B. Kreinz, *Layered Event Modelling: Semantic Separation as a Precondition
 for Explicit Causal Analysis*, Version 1.0, Zenodo, <https://doi.org/10.5281/zenodo.23438101> —
